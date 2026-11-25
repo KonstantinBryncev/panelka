@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="row g-3">
+            {% for category in categories %}
+                <div class="col-md-6">
+                    <div class="card card-panel h-100">
+                        <div class="card-header card-header-panel">{{ category.name }}</div>
+                        <div class="card-body d-flex flex-column gap-2">
+                            {% for script in category.scripts.all %}
+                                <form method="post" action="{% url 'run_script' script.id %}" class="script-form" data-script-id="{{ script.id }}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success w-100 text-start d-flex justify-content-between align-items-center">
+                                        <span>{{ script.title }}</span>
+                                        <i class="fas fa-play small"></i>
+                                    </button>
+                                </form>
+                            {% empty %}
+                                <p class="text-muted small mb-0">Кнопок пока нет</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-secondary">Колонок пока нет. Добавьте их в админке Django.</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include 'partials/vps_sidebar.html' %}
+</div>
+
+{% include 'partials/terminal.html' %}
+{% endblock %}

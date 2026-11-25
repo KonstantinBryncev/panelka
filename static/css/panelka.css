@@ -1,0 +1,51 @@
+body {
+    background-color: #121417;
+    color: #e9ecef;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar {
+    background-color: #1a1d21 !important;
+    border-bottom: 1px solid #2c3036;
+}
+.card-panel {
+    background-color: #1a1d21;
+    border: 1px solid #2c3036;
+    border-radius: 10px;
+}
+.card-header-panel {
+    background-color: #212529;
+    border-bottom: 1px solid #2c3036;
+    font-weight: 600;
+    color: #fff;
+}
+.terminal-box {
+    background-color: #0d0f12;
+    color: #00ff66;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.85rem;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #2c3036;
+    height: 320px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.form-select-dark, .form-control-dark {
+    background-color: #212529;
+    color: #fff;
+    border: 1px solid #3a3f47;
+}
+.form-select-dark:focus, .form-control-dark:focus {
+    background-color: #262b30;
+    color: #fff;
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+.project-row {
+    background-color: #212529;
+    border: 1px solid #2c3036;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}

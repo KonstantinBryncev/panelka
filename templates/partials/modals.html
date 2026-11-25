@@ -1,0 +1,79 @@
+<!-- МОДАЛЬНОЕ ОКНО: Пошаговый запуск проекта -->
+<div class="modal fade" id="wizardLaunchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light border-secondary">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title"><i class="fas fa-rocket text-success me-2"></i>Запуск проекта на VPS</h5>
+                <button type="button" class="btn-close btn-close-white" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-info">1. Выберите VPS сервер из базы:</label>
+                    <select id="wizardServerSelect" class="form-select form-select-dark" onchange="fetchProjectsForWizard()">
+                        {% for s in servers %}
+                            <option value="{{ s.id }}">{{ s.name }} ({{ s.host }})</option>
+                        {% empty %}
+                            <option value="">Серверы не добавлены в админке</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-info">2. Выберите скачанный проект (/root/projects):</label>
+                    <select id="wizardProjectSelect" class="form-select form-select-dark">
+                        <option value="">Загрузка списка проектов...</option>
+                    </select>
+                    <div id="wizardProjectHelp" class="form-text text-muted small"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-info">3. Выберите локальный файл .env:</label>
+                    <input type="file" id="wizardEnvInput" class="form-control form-control-dark" accept=".env,text/plain,*">
+                    <div class="form-text text-muted small">
+                        Если файл не выбран, проект запустится с текущим .env на сервере (или без него).
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-success" onclick="submitWizardLaunch()">
+                    <i class="fas fa-play me-1"></i> Запустить проект
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО: Клонирование с GitHub -->
+<div class="modal fade" id="githubDeployModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light border-secondary">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title"><i class="fab fa-github me-2"></i>Клонировать с GitHub на VPS</h5>
+                <button type="button" class="btn-close btn-close-white" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ghScriptId">
+                <div class="mb-3">
+                    <label class="form-label">Логин GitHub:</label>
+                    <div class="input-group">
+                        <input type="text" id="ghUsernameInput" class="form-control form-control-dark" placeholder="username">
+                        <button class="btn btn-outline-info" type="button" onclick="reloadGithubRepos()">Загрузить</button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Выберите репозиторий:</label>
+                    <select id="ghRepoSelect" class="form-select form-select-dark"></select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Выберите VPS сервер из базы:</label>
+                    <select id="ghServerSelect" class="form-select form-select-dark"></select>
+                </div>
+            </div>
+            <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-success" onclick="startGithubClone()">Клонировать</button>
+            </div>
+        </div>
+    </div>
+</div>

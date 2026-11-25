@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold text-success" href="{% url 'index' %}">
+            <i class="fas fa-terminal me-2"></i>PANELKA
+        </a>
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+            <div class="d-flex align-items-center gap-2">
+                <label for="globalServerSelect" class="text-muted small mb-0 text-nowrap">
+                    <i class="fas fa-server me-1"></i>VPS Сервер:
+                </label>
+                <select id="globalServerSelect" class="form-select form-select-sm form-select-dark" style="min-width: 220px;" onchange="loadVpsProjects()">
+                    {% for s in servers %}
+                        <option value="{{ s.id }}">{{ s.name }} ({{ s.host }})</option>
+                    {% empty %}
+                        <option value="">Нет серверов в базе</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-success btn-sm" onclick="openWizardLaunchModal()">
+                <i class="fas fa-rocket me-1"></i> Запустить проект (.env)
+            </button>
+
+            <a class="btn btn-outline-light btn-sm" href="{% url 'index' %}">Панель управления</a>
+            <a class="btn btn-outline-warning btn-sm" href="/admin/" target="_blank">Админка</a>
+        </div>
+    </div>
+</nav>

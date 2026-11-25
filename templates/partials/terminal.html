@@ -1,0 +1,26 @@
+<div class="card card-panel mt-4 mb-5" id="consoleCard">
+    <div class="card-header card-header-panel d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <span><i class="fas fa-terminal text-success me-2"></i>Консоль выполнения VPS</span>
+        <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-info" onclick="sendQuickSshCommand('pwd && ls -la ~ && ls -la /root/projects')" title="Проверить папки на сервере">
+                <i class="fas fa-folder-tree me-1"></i> Проверить папки
+            </button>
+            <button class="btn btn-sm btn-outline-warning" onclick="clearTerminal()">Очистить</button>
+            <button class="btn btn-sm btn-outline-danger" onclick="hideTerminal()">✕ Закрыть</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <!-- Поле для отправки произвольной команды на VPS -->
+        <div class="input-group mb-3">
+            <span class="input-group-text bg-dark text-success border-secondary font-monospace">$</span>
+            <input type="text" id="customSshInput" class="form-control form-control-dark font-monospace"
+                   placeholder="Введите SSH команду для выбранного VPS (например: pwd && ls -la ~)"
+                   onkeydown="if(event.key === 'Enter') runCustomSshCommand()">
+            <button class="btn btn-success" type="button" onclick="runCustomSshCommand()">
+                <i class="fas fa-paper-plane me-1"></i> Выполнить
+            </button>
+        </div>
+
+        <div class="terminal-box" id="vpsTerminal">Ожидание запуска задачи...</div>
+    </div>
+</div>

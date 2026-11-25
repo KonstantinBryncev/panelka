@@ -1,0 +1,27 @@
+<div class="col-lg-4">
+    <div class="card card-panel mb-3">
+        <div class="card-header card-header-panel d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-layer-group text-success me-2"></i>Проекты в screen</span>
+            <button class="btn btn-sm btn-outline-secondary" onclick="loadVpsProjects()" title="Обновить">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+        <div class="card-body" id="runningScreensList">
+            <div class="text-muted small">Загрузка списка...</div>
+        </div>
+    </div>
+
+    <div class="card card-panel">
+        <div class="card-header card-header-panel d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-folder-open text-info me-2"></i>Скачанные проекты VPS</span>
+            <button class="btn btn-sm btn-outline-secondary" onclick="loadVpsProjects()" title="Обновить">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+        <div class="card-body" id="downloadedProjectsList">
+            <div class="text-muted small">Загрузка списка...</div>
+        </div>
+    </div>
+</div>
+
+<input type="file" id="quickEnvFileInput" accept=".env,text/plain,*" style="display: none;">
